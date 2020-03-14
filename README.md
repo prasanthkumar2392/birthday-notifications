@@ -5,7 +5,14 @@
  
  After adding the events, users will be given a Hateoas URL to view the list of the events in the database.
  
- Also a scheduler will run on a fixed interval daily to check the updates and send the messages.
+ A scheduler will run on a fixed interval daily to check the updates and send the messages to user on preferred timings.
+ 
+#TODO
+ 
+ User should able to sigup for the first time and creates login credentials.
+ Currently there is a limit in number of messages with the Twilio.
+ Sending Reminder in Whats app
+ 
 
 ## Bring up postgres using docker-compose
 Start postgres
@@ -25,6 +32,7 @@ password: example
 
 
 ### Libraries Used
+Java 11
 Postgres
 Twilio
 Spring web

@@ -16,6 +16,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-hateoas'
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation group: "com.twilio.sdk", name: "twilio", version: "7.42.0"
 	runtimeOnly 'org.postgresql:postgresql'
 	implementation 'org.projectlombok:lombok:1.18.8'

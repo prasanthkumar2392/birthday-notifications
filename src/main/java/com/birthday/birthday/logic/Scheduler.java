@@ -25,7 +25,7 @@ public class Scheduler {
     @Value("${user.receiver.phone}")
     private String RECEIVER_PHONE;
 
-    //@Scheduled(cron = "*/10 * * * * *")
+    @Scheduled(cron = "*/10 * * * * *")
     public void scheduleTaskUsingCronExpression() {
         LocalDate date = LocalDate.now();
         String todayDate = date.format(DateTimeFormatter.ofPattern("dd-MM"));
@@ -34,9 +34,11 @@ public class Scheduler {
             return s.getBirthDate().equalsIgnoreCase(todayDate) && s.getUserName().equalsIgnoreCase("Prasanth");
         }).map(BirthdayEntity::getBirthDayName).collect(Collectors.toList());
         list.forEach((s) -> {
-            Message message = (Message)Message.creator(new PhoneNumber(RECEIVER_PHONE), new PhoneNumber("+15304196047"), s + " birthday today !! Wish him").create();
-            System.out.println(message.getSid());
-            System.out.println("** ** " + s);
+            try{
+                Message message = (Message)Message.creator(new PhoneNumber(RECEIVER_PHONE), new PhoneNumber("+15304196047"), s + " birthday today !! Wish him").create();
+            }catch (Exception e){
+                throw new PhoneNotConfiguredException(e);
+            }
         });
     }
 }
